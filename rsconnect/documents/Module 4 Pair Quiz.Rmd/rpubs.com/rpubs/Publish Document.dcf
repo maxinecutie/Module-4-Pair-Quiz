@@ -1,0 +1,11 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/795461/4c06296d801c47aa9db8c2800bc14ef9
+bundleId: https://api.rpubs.com/api/v1/document/795461/4c06296d801c47aa9db8c2800bc14ef9
+url: http://rpubs.com/maxinecutie/795461
+when: 1627840629.55058
+lastSyncTime: 1627840629.55058

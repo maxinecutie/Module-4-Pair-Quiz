@@ -1,0 +1,77 @@
+---
+title: "Module 4 Pair Quiz"
+author: "John Rollic Conducto and Gian Nicole Villamayor"
+date: "7/27/2021"
+output: html_document
+---
+
+<center> <font size= 20px>
+<font color=#5C3317>
+**Question 1**
+</center> </font></font>
+
+**An article in the Journal of Sound and Vibration ["Measurement of Noise-Evoked Blood Pressure by Means of Averaging Method: Relation between Blood Pressure Rise and PSL" (1991, Vol. 151(3), pp. 383-394)] described a study investigating the relationship between noise exposure and hypertension. The following data are representative of those reported in the article.**
+
+<br> 
+
+| Statistical Figures | Value
+|----------------|-----------------------------------------------------------------------|
+| $z_{\alpha }$ | 1.645
+| $\bar{x}$  | 40.5 | 
+|$\sigma$ | 1.25 | 
+|n | 10 | 
+
+
+<br>
+<br>
+
+A.	Draw a scatter diagram of y (blood pressure rise in millimeters of mercury) versus x (sound pressure level in decibels). Does a simple linear regression model seem reasonable in this situation?
+
+<br>
+<br>
+
+B.	Fit the simple linear regression model using least squares. Find an estimate of σ2σ2.
+
+<br>
+<br>
+
+C.	Find the predicted mean rise in blood pressure level associated with a sound pressure level of 85 decibels.
+
+<br>
+
+<br>
+
+<center> <font size= 20px>
+<font color=#5C3317>
+**Question 2**
+</center> </font></font>
+
+**An article in Optical Engineering ["Operating Curve Extraction of a Correlator's Filter" (2004, Vol. 43, pp. 2775-2779)] reported on the use of an optical correlator to perform an experiment by varying brightness and contrast. The resulting modulation is characterized by the useful range of gray levels. The data follow:**
+
+<br>
+<br>
+
+A.	Fit a multiple linear regression model to these data.
+<br>
+<br>
+B.	Estimate σ2σ2.
+C.	Compute the standard errors of the regression coefficients.
+<br>
+<br>
+D.	Predict the useful range when brightness = 80 and contrast = 75.
+<br>
+<br>
+E.	Test for significance of regression using α=0.05α=0.05. What is the P-value for this test?
+<br>
+<br>
+F.	Construct a t-test on each regression coefficient. What conclusions can you draw about the variables in this model? Use α=0.05α=0.05.
+
+
+<br><br>
+
+```{css, echo = FALSE}
+  
+p {
+  font-size: 20px;
+}
+```
