@@ -5,68 +5,224 @@ date: "7/27/2021"
 output: html_document
 ---
 
-<center> <font size= 20px>
-<font color=#5C3317>
-**Question 1**
-</center> </font></font>
+## Answers {.tabset}
 
-**An article in the Journal of Sound and Vibration ["Measurement of Noise-Evoked Blood Pressure by Means of Averaging Method: Relation between Blood Pressure Rise and PSL" (1991, Vol. 151(3), pp. 383-394)] described a study investigating the relationship between noise exposure and hypertension. The following data are representative of those reported in the article.**
+### **Question 1**
 
-<br> 
 
-| Statistical Figures | Value
-|----------------|-----------------------------------------------------------------------|
-| $z_{\alpha }$ | 1.645
-| $\bar{x}$  | 40.5 | 
-|$\sigma$ | 1.25 | 
-|n | 10 | 
 
+<br>
+<font size=5px><font color=#5C3317> **An article in the Journal of Sound and Vibration ["Measurement of Noise-Evoked Blood Pressure by Means of Averaging Method: Relation between Blood Pressure Rise and PSL" (1991, Vol. 151(3), pp. 383-394)] described a study investigating the relationship between noise exposure and hypertension. The following data are representative of those reported in the article.**</font></font>
+<br>
+<br>
+
+```{r, echo=FALSE}
+x=c(60,63,65,70,70,70,80,90,80,80,85,89,90,90,90,90,94,100,100,100) 
+y=c(1,0,1,2,5,1,4,6,2,3,5,4,6,8,4,5,7,9,7,6)
+TPS145= data.frame(x,y)
+TPS145
+```
+
+<br>
+<br>
+<font color=#2554C7> **A.	Draw a scatter diagram of y (blood pressure rise in millimeters of mercury) versus x (sound pressure level in decibels). Does a simple linear regression model seem reasonable in this situation?** </font>
+
+
+
+```{r, echo=FALSE}
+library(ggplot2)
+scatter145=ggplot(data=TPS145, aes(x,y,colour=x)) +   
+  geom_point() 
+scatter145 = scatter145+ geom_point(size=2) +  
+  xlab("Sound pressure level in decibels") +  
+  ylab("Blood pressure rise in millimeters of mercury") +   
+  ggtitle("Scatter Diagram ")
+scatter145=scatter145+ geom_point(size=3) + 
+  xlab("Sound pressure level in decibels") +  
+  ylab("Blood pressure rise in millimeters of mercury")+ 
+  ggtitle("Scatter Diagram")+ 
+  geom_smooth(method = "lm")
+
+scatter145
+```
+
+
+
+<font color=#E55451>**The simple linear regression model seem reasonable in this situation because the dependent variable (y) and the independent variable (x) forms a linear relation and increasing trend which means that the scattered points form a straight line.**</font>
 
 <br>
 <br>
 
-A.	Draw a scatter diagram of y (blood pressure rise in millimeters of mercury) versus x (sound pressure level in decibels). Does a simple linear regression model seem reasonable in this situation?
+<font color=#2554C7> **B.	Fit the simple linear regression model using least squares. Find an estimate of $\sigma ^2$.** </font>
+<br>
+
+A simple linear regression model is denoted by:
+<br>
+$Y=B_0+B_1x+\epsilon$
+<br>
+<br>
+By applying the method of least squares, we can estimate the $B_0$ which is the intercept and $B_1$ which is the slope.
+<br>
+<br>
+These are some formulas that we will be using to find the equation of the linear regression:
+<br>
+<br>
+$\beta _1=\frac{S_{xy}}{S_{xx}}$
+<br>
+$\beta _0=\bar{y}-\beta _1x$
+<br>
+$S_{xx}=\sum \left(x_i-\bar{x}\right)^2$
+<br>
+$S_{xy}=\sum \:y_i\left(x_i-\bar{x}\right)^2$
+<br>
+<br>
+Let's create a table for the data: 
+
+```{r, echo=FALSE}
+x_values=c(60,63,65,70,70,70,80,90,80,80,85,89,90,90,90,90,94,100,100,100) 
+y_values=c(1,0,1,2,5,1,4,6,2,3,5,4,6,8,4,5,7,9,7,6)
+x_minus_mean=c(-22.8,-19.8,-17.8,-12.8,-12.8,-12.8,-2.8,7.2,-2.8,-2.8,2.2,6.2,7.2,7.2,7.2,7.2,11.2,17.2,17.2,17.2)
+x_minus_mean_squared=c(519.84,392.04,316.84,163.84,163.84,163.84,7.84,51.84,7.84,7.84,4.84,38.44,51.84,51.84,51.84,51.84,125.44,295.84,295.84,295.84)
+x_mins_mean_squared_x_y=c(-22.8,0,-17.8,-25.6,-64,-12.8,-11.2,43.2,-5.6,-8.4,11,24.8,43.2,57.6,28.8,36,78.4,154.8,120.4,103.2)
+TPS146= data.frame(x_values,y_values,x_minus_mean,x_minus_mean_squared,x_mins_mean_squared_x_y)
+TPS146
+```
+$\sum \:y_i\left(x_i-\bar{x}\right)^2=533.2$
+<br>
+$\sum \left(x_i-\bar{x}\right)^2=3059.2$
+<br>
+
+
+<br>
+Solution for the equation of linear regression:
+$\beta _1=\frac{S_{xy}}{S_{xx}}$
+
+<br>
+$\beta _1=\frac{\text{533.2}}{\text{3059.2}}$
+<br>
+$\beta _1=0.1743$
+<br>
+<br>
+$\beta _0=\bar{y}-\beta _1x$
+<br>
+$\beta _0=4.3-0.1743\left(82.8\right)$
+<br>
+$\beta _0=-10.132$
+<br>
+<br>
+Therefore the equation for linear regression is:
+<br>
+$Y=-10.132+0.1743x$
+<br>
+<br>
+These are some formulas that we will be using to find an estimate of $\sigma ^2$:
+<br>
+<br>
+$SS_T=\sum \left(y_i-\bar{y}\right)^2$
+<br>
+$\sigma ^=\sqrt{\frac{SS_T-\beta _1S_{xy}}{n-2}}$
+<br>
+<br>
+Let's create a table for the data: 
+
+```{r, echo=FALSE}
+y_values=c(1,0,1,2,5,1,4,6,2,3,5,4,6,8,4,5,7,9,7,6)
+y_minus_mean=c(-3.3,-4.3,-3.3,-2.3,0.7,-3.3,-0.3,1.7,-2.3,-1.3,0.7,-0.3,1.7,3.7,-0.3,0.7,2.7,4.7,2.7,1.7)
+y_minus_mean_squared=c(10.89,18.49,10.89,5.29,0.49,10.89,0.09,2.89,5.29,1.69,0.49,0.09,2.89,13.69,0.09,0.49,7.29,22.09,7.29,2.89)
+
+TPS147= data.frame(y_values,y_minus_mean,y_minus_mean_squared)
+TPS147
+```
+$\sum \left(y_i-\bar{y}\right)^2=124.2$
+<br>
+<br>
+Solution for finding an estimate of $\sigma ^2$
+<br>
+<br>
+$\sigma ^=\sqrt{\frac{124.2-0.1743\left(533.2\right)}{20-2}}$
+<br>
+$\sigma ^=1.318$
+<br>
+<br>
+<font color=#E55451>**Therefore, the estimate of $\sigma ^2$ is 1.318.**</font>
 
 <br>
 <br>
 
-B.	Fit the simple linear regression model using least squares. Find an estimate of σ2σ2.
+<font color=#2554C7> **C.	Find the predicted mean rise in blood pressure level associated with a sound pressure level of 85 decibels.**</font>
+
+
+Based on the previous item, the equation of the linear regression for this problem is represented by: $Y=-10.132+0.1743x$, wherein x is the *sound pressure level in decibels* and y is the *blood pressure rise in millimeters of mercury*. Therefore, we need to substitute 85 decibels as the value of x.
+<br>
+<br>
+
+We will then have:
+<br>
+<br>
+$Y=-10.132+0.1743\left(85\right)$
+<br>
+<br>
+$Y=-10.132+14.82$
+<br>
+<br>
+ **$Y=4.68$ mm**
+<br>
+<br>
+<font color=#E55451>**Therefore, the predicted mean rise in blood pressure level associated with a sound pressure level of 85 decibels is 4.68 mm.**</font>
 
 <br>
 <br>
 
-C.	Find the predicted mean rise in blood pressure level associated with a sound pressure level of 85 decibels.
+
+### **Question 2**
+
+
+<br>
+
+<font color=#5C3317><font size=5px>**An article in Optical Engineering ["Operating Curve Extraction of a Correlator's Filter" (2004, Vol. 43, pp. 2775-2779)] reported on the use of an optical correlator to perform an experiment by varying brightness and contrast. The resulting modulation is characterized by the useful range of gray levels. The data follow:**</font></font>
 
 <br>
 
+```{r, echo=FALSE}
+Brightness_percent=c(54,61,65,100,100,100,50,57,54) 
+Contrast_percent=c(56,80,70,50,65,80,25,35,26)
+Useful_range=c(96,50,50,112,96,80,155,144,255)
+TPS146= data.frame(Brightness_percent,Contrast_percent,Useful_range)
+TPS146
+```
+
 <br>
 
-<center> <font size= 20px>
-<font color=#5C3317>
-**Question 2**
-</center> </font></font>
+**A.	Fit a multiple linear regression model to these data.**
+<br>
+The equation for the multiple linear regression model is denoted by:
+<br>
+<br>
+$Y=\beta _0+\beta _1x_1+\beta _2x_2+\epsilon$
+<br>
+wherein $Y$ is useful range, $b_0$ is the constant, $b_1$ is the brightness, and $b_2$ is the contrast.
+<br>
+<br>
+**B.	Estimate $\sigma ^2$.**
+<br>
+<br>
+**C.	Compute the standard errors of the regression coefficients.**
+<br>
+<br>
+**D.	Predict the useful range when brightness = 80 and contrast = 75.**
+<br>
+<br>
+**E.	Test for significance of regression using α = 0.05. What is the P-value for this test?**
+<br>
+<br>
+**F.	Construct a t-test on each regression coefficient. What conclusions can you draw about the variables in this model? Use α = 0.05.**
 
-**An article in Optical Engineering ["Operating Curve Extraction of a Correlator's Filter" (2004, Vol. 43, pp. 2775-2779)] reported on the use of an optical correlator to perform an experiment by varying brightness and contrast. The resulting modulation is characterized by the useful range of gray levels. The data follow:**
-
+### **References**
+[1] D. Montgomery and G. Runger, Applied statistics and probability for engineers, 7th ed. Wiley, 2017, pp. 262–279.
 <br>
+[2] E. Yihui Xie, “7.6 Put content in tabs | R Markdown Cookbook”, Bookdown.org. [Online]. Available: <https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html.> [Accessed: 30- Jul- 2021].
 <br>
-
-A.	Fit a multiple linear regression model to these data.
-<br>
-<br>
-B.	Estimate σ2σ2.
-C.	Compute the standard errors of the regression coefficients.
-<br>
-<br>
-D.	Predict the useful range when brightness = 80 and contrast = 75.
-<br>
-<br>
-E.	Test for significance of regression using α=0.05α=0.05. What is the P-value for this test?
-<br>
-<br>
-F.	Construct a t-test on each regression coefficient. What conclusions can you draw about the variables in this model? Use α=0.05α=0.05.
-
-
+[3] R. Cunningham, “First Fun with RMarkdown,” RPubs. [Online]. Available: <https://rpubs.com/redrobincl/241336.> [Accessed: 29-Jul-2021]. 
 <br><br>
 
 ```{css, echo = FALSE}
